@@ -160,6 +160,8 @@ class Simulator:
             strand = "+" if np.random.rand() < self.sense_strand_ratio else "-"
             # tsd length
             tsd_len = np.random.randint(self.tsd_min, self.tsd_max + 1)
+            if te_id.startswith("bg"):
+                tsd_len = 0
             if event["type"] == "INS":
                 # bed file is 0-based
                 ref_allele = self.ref_seq[start - 1]
